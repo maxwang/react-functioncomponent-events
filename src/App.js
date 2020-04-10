@@ -25,14 +25,15 @@ function App() {
     <div className="App">
       <h1>Hi React App</h1>
       <button onClick={(e) => switchNameHandler("Max1", e)}>Switch Name</button>
-      <Person name={persons[0].name} age={persons[0].age} />
-      <Person
-        click={switchNameHandler}
-        change={changeNameHandler}
-        name={persons[1].name}
-        age={persons[1].age}
-      />
-      <Person name={persons[2].name} age={persons[2].age} />
+      {persons.map((person, i) => (
+        <Person
+          key={i}
+          click={switchNameHandler}
+          change={changeNameHandler}
+          name={person.name}
+          age={person.age}
+        />
+      ))}
     </div>
   );
 }
