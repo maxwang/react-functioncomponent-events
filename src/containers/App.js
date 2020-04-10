@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 function App() {
   const persons = [
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hi React App</h1>
+      <Cockpit />
       <Persons persons={persons} />
     </div>
   );
