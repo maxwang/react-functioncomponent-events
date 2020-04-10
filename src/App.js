@@ -4,32 +4,37 @@ import Person from "./Person/Person";
 
 function App() {
   const [persons, setPersons] = useState([
-    { name: "Max", age: 28 },
-    { name: "John", age: 35 },
-    { name: "Lucy", age: 6 },
+    { id: "1", name: "John", age: 35 },
+    { id: "2", name: "Lucy", age: 6 },
+    { id: "3", name: "Max", age: 28 },
   ]);
 
-  const switchNameHandler = (_newName, _event) => {
-    let newArray = [...persons];
-    newArray[0].name = _newName;
-    setPersons(newArray);
-  };
+  // const switchNameHandler = (_newName, _event) => {
+  //   let newArray = [...persons];
+  //   newArray[0].name = _newName;
+  //   setPersons(newArray);
+  // };
 
-  const changeNameHandler = (_event) => {
+  const changeNameHandler = (_event, id) => {
     let newArray = [...persons];
-    newArray[0].name = _event.target.value;
+    const personIndex = newArray.findIndex((p) => {
+      return p.id === id;
+    });
+
+    if (personIndex > -1) {
+      newArray[personIndex].name = _event.target.value;
+    }
     setPersons(newArray);
   };
 
   return (
     <div className="App">
       <h1>Hi React App</h1>
-      <button onClick={(e) => switchNameHandler("Max1", e)}>Switch Name</button>
+      {/* <button onClick={(e) => switchNameHandler("Max1", e)}>Switch Name</button> */}
       {persons.map((person, i) => (
         <Person
-          key={i}
-          click={switchNameHandler}
-          change={changeNameHandler}
+          key={person.id}
+          change={(event) => changeNameHandler(event, person.id)}
           name={person.name}
           age={person.age}
         />
