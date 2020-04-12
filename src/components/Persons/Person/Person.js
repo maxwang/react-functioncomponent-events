@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Person(props) {
+const Person = (props) => {
   return (
     <div>
       <h3>
@@ -10,6 +11,11 @@ function Person(props) {
       <p>{props.children}</p>
     </div>
   );
-}
+};
+
+Person.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+};
 
 export default Person;
